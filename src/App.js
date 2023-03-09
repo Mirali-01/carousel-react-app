@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
+import Receipt from "./components/Receipt";
+import receiptInfo from "./models/receiptInfo";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // useState(receiptInfo);
+  const totalReceipts = receiptInfo.map((receipt) => {
+    return receipt.paid ? null : <Receipt currentReceipt={receipt} />;
+  });
+
+  return <div className="App">{totalReceipts}</div>;
 }
 
 export default App;
+
+// reciepts are put inside a defined space instead of individual spaces
